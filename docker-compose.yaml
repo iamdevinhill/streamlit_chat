@@ -1,0 +1,13 @@
+version: '3'
+services:
+  zephyr-chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Specify the Dockerfile name
+    image: zephyr-chatbot:latest
+    ports:
+      - "8501:8501"
+    container_name: zephyr-chatbot
+    restart: always  # Add a restart policy to automatically restart the container on failure
+    command: ["streamlit", "run", "main.py"]  # Specify the command to run the application
+    working_dir: /app  # Set the working directory inside the container
